@@ -15,4 +15,5 @@ Process:
 7. Chose to work with ProfileController & PublicProfileController.
     The Profile is used to view and edit your profile when logged in. The PublicProfile is used to show other users and non-users other peoples profiles.
 8. Profile-pages working in prototype-fase.
-9. Next, I will make a Home-page with the news feed wich is the first thing that pops on screen when I open the site
+9. Next, I will make a Home-page with the news feed wich is the first thing that pops on screen when I open the site.
+10. Our navigation bar isn't really in proportion now, just good enough so it works without errors. Let's fix that.
