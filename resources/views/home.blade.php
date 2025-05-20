@@ -1,4 +1,4 @@
-<x-app-layout>Newsfeed
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Newsfeed
@@ -9,9 +9,8 @@
         @auth
             @if(auth()->user()->is_admin)
                 <form action="{{ route('newsItem.store') }}" method="POST" enctype="multipart/form-data" class="mb-6 bg-white p-4 rounded shadow">
-                    @csrf
                     <div>
-                        <label for="title" class="block">Titel</label>
+                        <label for="title" class="block">Title</label>
                         <input type="text" name="title" class="w-full border rounded p-2" required>
                     </div>
                     <div class="mt-4">
@@ -23,7 +22,7 @@
                         <input type="file" name="image" class="block mt-1">
                     </div>
                     <div class="mt-4">
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Publicate</button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" style="background-color: #3B82F6 !important;">Publicate</button>
                     </div>
                 </form>
             @endif
@@ -43,11 +42,9 @@
                         <div class="mt-4 flex gap-4">
                             <a href="{{ route('newsItem.edit', $item) }}" class="text-blue-500">✏️ Edit</a>
                             <form method="POST" action="{{ route('newsItem.delete', $item) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                @csrf
                                 @method('DELETE')
                                     <button type="submit" class="text-red-500">🗑️ Delete</button>
                                 </form>
-                                @csrf
                             </div>
                         @endif
                     @endauth

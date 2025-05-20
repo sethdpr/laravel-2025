@@ -17,3 +17,9 @@ Process:
 8. Profile-pages working in prototype-fase.
 9. Next, I will make a Home-page with the news feed wich is the first thing that pops on screen when I open the site.
 10. Our navigation bar isn't really in proportion now, just good enough so it works without errors. Let's fix that.
+11. For some reason my style doesn't apply in the profile.edit-page. Let's find out why.
+12. My form in profile.edit doesn't send data to publicprofile.show.
+     I get a 302 response in DevTools
+     I made the edit page show your info aswell to make everything work in one page. This should be easier.
+     Started using a normal request instead of ProfileUpdateRequest and just wrote the code of this request in my update-method in the controller.
+     Deleted the Profile-model and just using User-model to store all info in. This should also be easier to work with.

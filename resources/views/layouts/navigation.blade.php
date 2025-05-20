@@ -12,12 +12,6 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         Home
                     </x-nav-link>
-
-                    @auth
-                        <x-nav-link :href="route('public.show', ['username' => Auth::user()->username])" :active="request()->routeIs('public.show')">
-                            My Profile
-                        </x-nav-link>
-                    @endauth
                 </div>
             </div>
 
@@ -36,6 +30,7 @@
                         </x-slot>
 
                         <x-slot name="content">
+
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Edit Profile') }}
                             </x-dropdown-link>
@@ -50,7 +45,7 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <div class="space-x-4">
+                    <div class="flex gap-4">
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-gray-900">Log in</a>
                         <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-gray-900">Register</a>
                     </div>
@@ -91,7 +86,7 @@
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link :href="route('profile.update')">
                         Edit Profile
                     </x-responsive-nav-link>
 
