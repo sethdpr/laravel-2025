@@ -12,6 +12,15 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         Home
                     </x-nav-link>
+
+                @auth
+                    @if(auth()->user()->is_admin)
+                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.users.*')">
+                            Admin-panel
+                        </x-nav-link>
+                    @endif
+                @endauth
+
                 </div>
             </div>
 
