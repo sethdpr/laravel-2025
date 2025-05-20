@@ -32,14 +32,15 @@
                         <div class="mt-4 flex gap-4">
                             <a href="{{ route('newsItem.edit', $item) }}" class="text-blue-500">✏️ Edit</a>
                             <form method="POST" action="{{ route('newsItem.delete', $item) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                @csrf    
                                 @method('DELETE')
                                     <button type="submit" class="text-red-500">🗑️ Delete</button>
-                                </form>
-                            </div>
-                        @endif
-                    @endauth
-                </div>
-            @endforeach
-        </div>
+                            </form>
+                        </div>
+                    @endif
+                @endauth
+            </div>
+        @endforeach
     </div>
+</div>
 </x-app-layout>
