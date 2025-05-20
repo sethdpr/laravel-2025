@@ -23,6 +23,8 @@
                 <div class="bg-white p-4 rounded shadow">
                     <h3 class="text-xl font-bold">{{ $item->title }}</h3>
                     <p class="mt-2">{{ $item->content }}</p>
+                    <p class="text-gray-500 text-sm mt-1">Published on {{ $item->created_at->format('d/m/Y, H:i') }}</p>
+
                     @if($item->image_path)
                         <img src="{{ asset('storage/' . $item->image_path) }}" alt="Afbeelding" class="mt-4 w-full max-w-md rounded">
                     @endif
