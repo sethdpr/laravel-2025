@@ -29,6 +29,7 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/newsItem', [HomeController::class, 'storeNewsItem'])->name('newsItem.store')->middleware('auth');
+Route::get('/newsItem/create', [HomeController::class, 'createNewsItem'])->name('newsItem.create')->middleware('auth');
 Route::get('/newsItem/{newsItem}/edit', [HomeController::class, 'editNewsItem'])->name('newsItem.edit')->middleware('auth');
 Route::put('/newsItem/{newsItem}', [HomeController::class, 'updateNewsItem'])->name('newsItem.update')->middleware('auth');
 Route::delete('/newsItem/{newsItem}', [HomeController::class, 'deleteNewsItem'])->name('newsItem.delete')->middleware('auth');

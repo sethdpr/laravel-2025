@@ -37,6 +37,16 @@ class HomeController extends Controller
         return redirect()->route('home')->with('status', 'News item created successfully!');
     }
 
+    public function createNewsItem()
+{
+    if (!Auth::user() || !Auth::user()->is_admin) {
+        abort(403);
+    }
+
+    return view('newsItem.create');
+}
+
+    
     public function editNewsItem(NewsItem $newsItem)
     {
         if (!Auth::user() || !Auth::user()->is_admin) {

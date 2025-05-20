@@ -23,3 +23,4 @@ Process:
      I made the edit page show your info aswell to make everything work in one page. This should be easier.
      Started using a normal request instead of ProfileUpdateRequest and just wrote the code of this request in my update-method in the controller.
      Deleted the Profile-model and just using User-model to store all info in. This should also be easier to work with.
+14. Now I will make a seperate view for the "new post" function in the Newsfeed for admins
