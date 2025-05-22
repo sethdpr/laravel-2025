@@ -8,6 +8,7 @@ use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FAQController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -38,4 +39,13 @@ Route::delete('/newsItem/{newsItem}', [HomeController::class, 'deleteNewsItem'])
 Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::post('/admin/users/{user}/make-admin', [AdminController::class, 'makeAdmin'])->name('admin.users.makeAdmin');
+});
+
+Route::middleware(['auth', 'can:isAdmin'])->group(function () {
+    Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
+    Route::get('/faq/create', [FAQController::class, 'create'])->middleware('auth')->name('faq.create');
+    Route::post('/faq', [FAQController::class, 'store'])->middleware('auth')->name('faq.store');
+    Route::get('/faq/{faq}/edit', [FAQController::class, 'edit'])->name('faq.edit');
+    Route::put('/faq/{faq}', [FAQController::class, 'update'])->name('faq.update');
+    Route::delete('/faq/{faq}', [FAQController::class, 'destroy'])->middleware('auth')->name('faq.destroy');
 });

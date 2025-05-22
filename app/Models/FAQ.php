@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class FAQ extends Model
 {
-    public function category() {
-        return $this->belongsTo(FAQCategory::class, 'faq_category_id');
-    }    
+    use HasFactory;
+    protected $fillable = [
+        'question',
+        'answer',
+    ];
 }

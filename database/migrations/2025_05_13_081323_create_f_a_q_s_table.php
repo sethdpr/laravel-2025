@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->text('answer');
-            $table->foreignId('f_a_q_category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('f_a_q_s');
+        
     }
 };

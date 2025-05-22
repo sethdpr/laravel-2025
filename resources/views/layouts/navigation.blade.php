@@ -13,6 +13,10 @@
                         Home
                     </x-nav-link>
 
+                    <x-nav-link :href="route('faq.index')" :active="request()->routeIs('faq.*')">
+                        FAQ
+                    </x-nav-link>
+
                 @auth
                     @if(auth()->user()->is_admin)
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.users.*')">
