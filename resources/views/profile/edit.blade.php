@@ -65,7 +65,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" style="background-color: #3B82F6 !important;">Save</button>
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" style="background-color: #3B82F6;">Save</button>
                     </div>
                 </form>
             </div>

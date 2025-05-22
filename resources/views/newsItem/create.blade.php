@@ -24,7 +24,7 @@
             </div>
 
             <div class="mt-6">
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" style="background-color: #3B82F6 !important;">📤 Publish</button>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" style="background-color: #3B82F6;">📤 Publish</button>
                 <a href="{{ route('home') }}" class="ml-4 text-gray-600 hover:underline">⬅ Back</a>
             </div>
         </form>

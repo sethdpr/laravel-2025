@@ -30,7 +30,7 @@
             </div>
 
             <div class="mt-4">
-                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded" style="background-color: #3B82F6 !important;">Save</button>
+                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded" style="background-color: #3B82F6;">Save</button>
             </div>
         </form>
     </div>

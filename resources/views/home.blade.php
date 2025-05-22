@@ -8,7 +8,7 @@
                 @if(auth()->user()->is_admin)
                     <a href="{{ route('newsItem.create') }}"
                        class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600"
-                       style="background-color: #3B82F6 !important;">
+                       style="background-color: #3B82F6;">
                         ➕ New Post
                     </a>
                 @endif
