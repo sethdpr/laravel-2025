@@ -49,6 +49,48 @@
                             </div>
                         @endif
                     @endauth
+
+                    <div x-data="{ showComments: false }" class="mt-4">
+                        <button @click="showComments = !showComments" class="text-indigo-600 text-sm">
+                            <span x-show="!showComments">Show comments</span>
+                            <span x-show="showComments">Hide comments</span>
+                        </button>
+
+                        <div x-show="showComments" x-transition class="mt-2 space-y-3">
+                            @foreach ($item->comments as $comment)
+                            <div class="bg-gray-100 p-2 rounded flex justify-between items-start">
+                                <div>
+                                <a href="{{ route('public.show', ['username' => $comment->user->username]) }}">
+                                    <strong>{{ $comment->user->name }}</strong>
+                                </a>
+                                <span class="text-xs text-gray-600 ml-2">{{ $comment->created_at->diffForHumans() }}</span>
+                                <p>{{ $comment->body }}</p>
+                            </div>
+
+                            @auth
+                                @if(auth()->user()->is_admin)
+                                    <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze reactie wil verwijderen?');" class="ml-4 flex-shrink-0">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600 hover:text-red-800" title="Delete comment" style="background-color: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 6px; border: none; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                                        🗑️
+                                    </button>
+                                    </form>
+                                @endif
+                            @endauth
+                        </div>
+                    @endforeach
+                            @auth
+                                <form action="{{ route('comments.store', $item) }}" method="POST" class="mt-2">
+                                    @csrf
+                                    <textarea name="body" rows="2" class="w-full border p-2 rounded" placeholder="Your comment"></textarea>
+                                    <button type="submit" class="bg-indigo-600 text-white mt-2 px-4 py-1 rounded" style="background-color: #3B82F6;">Comment</button>
+                                </form>
+                            @else
+                                <p class="text-sm text-gray-600">Log in to place comments</p>
+                            @endauth
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

@@ -29,10 +29,7 @@ class ContactController extends Controller
             ->to(config('mail.to.address'), config('mail.to.name'))
             ->replyTo($request->email)
             ->subject($request->subject);
-});
-
-
-
-        return redirect()->route('contact.show');
+    });
+        return redirect()->route('contact.show')->with('success', 'Message sent. We will get back to you soon.');
     }
 }

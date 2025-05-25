@@ -10,12 +10,13 @@ class NewsItem extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function favoritedByUsers() {
-        return $this->belongsToMany(User::class, 'favorite_newsitem_user');
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->latest();
     }
 
     protected $fillable = [
-    'title',
+    'title',    
     'content',
     'image_path',
 ];
