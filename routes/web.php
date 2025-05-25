@@ -54,13 +54,3 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
-
-Route::get('/test-mail', function () {
-    Mail::raw('Test message', function ($message) {
-        $message->from('unitedforum.info@gmail.com', 'United Forum');
-        $message->to('seth.depreter@gmail.com');
-        $message->subject('Test Email');
-    });
-
-    return 'Mail sent';
-});

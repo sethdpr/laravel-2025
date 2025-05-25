@@ -4,7 +4,7 @@
             <div class="flex">
                 <div class="shrink-0 flex items-center">
                     <a>
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-9 w-auto">
+                        <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="h-9 w-auto">
                     </a>
                 </div>
 
