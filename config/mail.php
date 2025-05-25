@@ -110,9 +110,16 @@ return [
     |
     */
 
+    'default' => env('MAIL_MAILER', 'smtp'),
+    
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'unitedforum.info@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'United Forum'),
+    ],
+
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'seth.depreter@gmail.com'),
+        'name' => env('MAIL_TO_NAME', 'United Forum'),
     ],
 
 ];

@@ -17,14 +17,17 @@
                         FAQ
                     </x-nav-link>
 
-                @auth
-                    @if(auth()->user()->is_admin)
-                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.users.*')">
-                            Admin-panel
-                        </x-nav-link>
-                    @endif
-                @endauth
+                    <x-nav-link :href="route('contact.show')" :active="request()->routeIs('contact.show')">
+                        Contact
+                    </x-nav-link>
 
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.users.*')">
+                                Admin-panel
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
