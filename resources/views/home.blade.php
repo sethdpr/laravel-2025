@@ -61,7 +61,7 @@
                             <div class="bg-gray-100 p-2 rounded flex justify-between items-start">
                                 <div>
                                 <a href="{{ route('public.show', ['username' => $comment->user->username]) }}">
-                                    <strong>{{ $comment->user->name }}</strong>
+                                    <strong>{{ $comment->user->username }}</strong>
                                 </a>
                                 <span class="text-xs text-gray-600 ml-2">{{ $comment->created_at->diffForHumans() }}</span>
                                 <p>{{ $comment->body }}</p>
@@ -83,7 +83,7 @@
                             @auth
                                 <form action="{{ route('comments.store', $item) }}" method="POST" class="mt-2">
                                     @csrf
-                                    <textarea name="body" rows="2" class="w-full border p-2 rounded" placeholder="Your comment"></textarea>
+                                    <textarea name="body" rows="2" class="w-full border p-2 rounded" placeholder="Your comment" style="resize: none;"></textarea>
                                     <button type="submit" class="bg-indigo-600 text-white mt-2 px-4 py-1 rounded" style="background-color: #3B82F6;">Comment</button>
                                 </form>
                             @else
