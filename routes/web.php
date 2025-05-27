@@ -27,33 +27,32 @@ Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('p
 
 Route::get('/public/{username}', [PublicProfileController::class, 'show'])->name('public.show');
 
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/profile', [ProfileController::class, 'edit'])->middleware('auth')->name('profile.edit');
 Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/newsItem', [HomeController::class, 'storeNewsItem'])->name('newsItem.store')->middleware('auth');
-Route::get('/newsItem/create', [HomeController::class, 'createNewsItem'])->name('newsItem.create')->middleware('auth');
-Route::get('/newsItem/{newsItem}/edit', [HomeController::class, 'editNewsItem'])->name('newsItem.edit')->middleware('auth');
-Route::put('/newsItem/{newsItem}', [HomeController::class, 'updateNewsItem'])->name('newsItem.update')->middleware('auth');
-Route::delete('/newsItem/{newsItem}', [HomeController::class, 'deleteNewsItem'])->name('newsItem.delete')->middleware('auth');
-Route::middleware(['auth'])->group(function () {
-    Route::post('/newsItem/{newsItem}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::middleware(['auth', 'can:isAdmin'])->group(function () {
+    Route::post('/newsItem', [HomeController::class, 'storeNewsItem'])->name('newsItem.store');
+    Route::get('/newsItem/create', [HomeController::class, 'createNewsItem'])->name('newsItem.create');
+    Route::get('/newsItem/{newsItem}/edit', [HomeController::class, 'editNewsItem'])->name('newsItem.edit');
+    Route::put('/newsItem/{newsItem}', [HomeController::class, 'updateNewsItem'])->name('newsItem.update');
+    Route::delete('/newsItem/{newsItem}', [HomeController::class, 'deleteNewsItem'])->name('newsItem.delete');
 });
-Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
-
+Route::post('/newsItem/{newsItem}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->middleware('auth')->name('comments.destroy');
 Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::post('/admin/users/{user}/make-admin', [AdminController::class, 'makeAdmin'])->name('admin.users.makeAdmin');
 });
 
+Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
 Route::middleware(['auth', 'can:isAdmin'])->group(function () {
-    Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
-    Route::get('/faq/create', [FAQController::class, 'create'])->middleware('auth')->name('faq.create');
-    Route::post('/faq', [FAQController::class, 'store'])->middleware('auth')->name('faq.store');
+    Route::get('/faq/create', [FAQController::class, 'create'])->name('faq.create');
+    Route::post('/faq', [FAQController::class, 'store'])->name('faq.store');
     Route::get('/faq/{faq}/edit', [FAQController::class, 'edit'])->name('faq.edit');
     Route::put('/faq/{faq}', [FAQController::class, 'update'])->name('faq.update');
-    Route::delete('/faq/{faq}', [FAQController::class, 'destroy'])->middleware('auth')->name('faq.destroy');
+    Route::delete('/faq/{faq}', [FAQController::class, 'destroy'])->name('faq.destroy');
 });
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');

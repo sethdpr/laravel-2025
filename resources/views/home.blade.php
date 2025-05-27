@@ -68,8 +68,8 @@
                             </div>
 
                             @auth
-                                @if(auth()->user()->is_admin)
-                                    <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze reactie wil verwijderen?');" class="ml-4 flex-shrink-0">
+                                @if(auth()->id() === $comment->user_id || auth()->user()->is_admin)
+                                    <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this comment?');" class="ml-4 flex-shrink-0">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-800" title="Delete comment" style="background-color: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 6px; border: none; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">

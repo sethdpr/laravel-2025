@@ -16,7 +16,7 @@ class EmailVerificationPromptController extends Controller
     public function __invoke(Request $request): RedirectResponse|View
     {
         return $request->user()->hasVerifiedEmail()
-                    ? redirect()->route('public.show', ['username' => Auth::user()->username])
+                    ? redirect()->route('profile.edit', ['username' => Auth::user()->username])
                     : view('auth.verify-email');
     }
 }

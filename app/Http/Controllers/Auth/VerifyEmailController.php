@@ -16,13 +16,13 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->route('public.show', ['username' => Auth::user()->username]);
+            return redirect()->route('profile.edit', ['username' => Auth::user()->username]);
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect()->route('public.show', ['username' => Auth::user()->username]);
+        return redirect()->route('profile.edit', ['username' => Auth::user()->username]);
     }
 }

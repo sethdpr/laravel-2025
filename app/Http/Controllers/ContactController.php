@@ -16,7 +16,7 @@ class ContactController extends Controller
     
     public function submit(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'subject' => 'required|max:100',
             'message' => 'required',

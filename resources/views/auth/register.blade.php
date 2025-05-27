@@ -10,7 +10,6 @@
         </div>
 
         <!-- Username -->
-                <!-- Name -->
         <div>
             <x-input-label for="username" :value="__('Username')" />
             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="name" />

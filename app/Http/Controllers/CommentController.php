@@ -22,17 +22,16 @@ class CommentController extends Controller
             'user_id' => optional(Auth::user())->id,
         ]);
 
-        return redirect()->back()->with('success', 'Reactie geplaatst.');
+        return redirect()->back();
     }
 
     public function destroy(Comment $comment)
     {
-        if (!Auth::user() || !Auth::user()->is_admin) {
-            abort(403);
+        if (!Auth::user() || (Auth::user()->id !== $comment->user_id && !Auth::user()->is_admin)) {
+            abort(403, 'Unauthorized action');
         }
-
         $comment->delete();
 
-        return redirect()->back()->with('success', 'Comment deleted');
+        return redirect()->back();
     }
 }

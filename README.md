@@ -17,7 +17,8 @@ If you cloned the repo from GitHub, this is what you should do next:
         --> MAIL_HOST = smtp.gmail.com
         --> MAIL_PORT = 587
         --> MAIL_USERNAME = seth.depreter@gmail.com
-        --> MAIL_PASSWORD = ucjtbwxdwnxaqfer
+        --> MAIL_PASSWORD = /*generated password*/
+            --> This is a generated password via "App-passwords" in Gmail settings
         --> MAIL_ENCRYPTION = tls
         --> MAIL_FROM_ADDRESS = "unitedforum.info@gmail.com"
         --> MAIL_FROM_NAME="United Forum"

@@ -15,7 +15,7 @@ class EmailVerificationNotificationController extends Controller
     public function store(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->route('public.show', ['username' => Auth::user()->username]);
+            return redirect()->route('profile.edit', ['username' => Auth::user()->username]);
         }
 
         $request->user()->sendEmailVerificationNotification();

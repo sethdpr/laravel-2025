@@ -113,13 +113,13 @@ return [
     'default' => env('MAIL_MAILER', 'smtp'),
     
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'unitedforum.info@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'United Forum'),
+        'address' => 'unitedforum.info@gmail.com',
+        'name' => 'United Forum',
     ],
 
     'to' => [
-        'address' => env('MAIL_TO_ADDRESS', 'seth.depreter@gmail.com'),
-        'name' => env('MAIL_TO_NAME', 'United Forum'),
+        'address' =>  'unitedforum.info@gmail.com',
+        'name' => 'United Forum',
     ],
 
 ];
