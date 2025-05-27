@@ -13,6 +13,10 @@
                         Home
                     </x-nav-link>
 
+                    <x-nav-link :href="route('fixtures.index')" :active="request()->routeIs('fixtures.*')">
+                        Fixtures
+                    </x-nav-link>
+
                     <x-nav-link :href="route('faq.index')" :active="request()->routeIs('faq.*')">
                         FAQ
                     </x-nav-link>

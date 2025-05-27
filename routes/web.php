@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FixtureController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -57,3 +58,11 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+Route::get('/fixtures', [FixtureController::class, 'index'])->name('fixtures.index');
+
+Route::middleware(['auth', 'can:isAdmin'])->group(function () {
+    Route::get('/fixtures/create', [FixtureController::class, 'create'])->name('fixtures.create');
+    Route::post('/fixtures', [FixtureController::class, 'store'])->name('fixtures.store');
+    Route::delete('/fixtures/{fixture}', [FixtureController::class, 'destroy'])->name('fixtures.destroy');
+});
